@@ -1,15 +1,14 @@
 # bubble popup
-
-bpop (bubble popup) es el plugin perfecto para ejecutar con react, vue o cualquier libreria que permita la programación reactiva, puedes verlo funcionando en [aquí](https://codepen.io/elimparable/pen/xrQqeO).
-
+v 1.0 17/07/17
+## uso
+Para inicializar la burbuja solo debemos escribir la siguiente linea de JavaScript.
 ```JavaScript
 // inicializar
-bpop.init(contenedor_a_generar);
+bpop.init();
 ```
-el parametro que enviemos en ```contenedor_a_generar``` servirá para asignar un ```id``` al espacio al que insertaremos nuestro HTML
+```autoRender``` puede recibir ```true``` o ```false``` de esto depende si genera el HTML de forma automatica, esto servira para que nosotros escribamos el HTML y poner contenido estatico por defualt dentro o luego lo hagamos con algun método de embebido.
 
-## uso
-El script renderiza todo el HTML que necesita, la estrucura generada por default es la siguiente
+La estrucura necesatia es la siguiente
 ```HTML
 
 <section id="floatingBubbleContainer"> <!-- 1 -->
@@ -28,4 +27,9 @@ El script renderiza todo el HTML que necesita, la estrucura generada por default
 
 3. Un pre-contenedor para el wrapper de todo el contenido, para agregar estilos y comportamiento al cajon de forma aislada al contenido que se pueda insertar luego.
 
-4. Finalmente el contenedor a donde empujaremos todo el contenido que creamos.
+4. Finalmente el contenedor a donde pondremos todo el contenido que generemos.
+----------------
+```JavaScript
+// detener ejecución
+bpop.kill();
+```
