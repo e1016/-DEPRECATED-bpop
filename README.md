@@ -1,14 +1,16 @@
 # bubble popup
-v 1.0 17/07/17
-## uso
-Para inicializar la burbuja solo debemos escribir la siguiente linea de JavaScript.
+v 0.1 - 17/07/17 example on [codepen](https://codepen.io/e1016/pen/VWObge)
+## use
+
+For initilize the bubble only need write the next line
 ```JavaScript
-// inicializar
+// init
 bpop.init();
 ```
-```autoRender``` puede recibir ```true``` o ```false``` de esto depende si genera el HTML de forma automatica, esto servira para que nosotros escribamos el HTML y poner contenido estatico por defualt dentro o luego lo hagamos con algun método de embebido.
 
-La estrucura necesatia es la siguiente
+```autoRender``` can recive ```true``` or ```false``` depending of this all the necesary HTML will render automaticly (we can push content with ReacJS or set manualy)
+
+auto-generated structure:
 ```HTML
 
 <section id="floatingBubbleContainer"> <!-- 1 -->
@@ -21,13 +23,10 @@ La estrucura necesatia es la siguiente
 </section>
 ```
 
-1. El contenedor padre, no posee estilos, solo se usa para agrupar todos los elemetos y reemplazar al document en el script.
-
-2. La burbuja que vemos flotando de un lado para otro cuando el contenedor está oculto.
-
-3. Un pre-contenedor para el wrapper de todo el contenido, para agregar estilos y comportamiento al cajon de forma aislada al contenido que se pueda insertar luego.
-
-4. Finalmente el contenedor a donde pondremos todo el contenido que generemos.
+1. The main container, haven't styles, it's only used for group all elements and replace all document in the script.
+2. The bubble than we can see floating on screen.
+3. A pre-contenedor used as a content wrapper, for add styles and behavior to the internal box.
+4. Finally the container where we can add our content.
 ----------------
 ```JavaScript
 // detener ejecución

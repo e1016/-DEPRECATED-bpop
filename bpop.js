@@ -4,18 +4,16 @@
 /////////////////////////////////////
 	
 var bpop = {
+	// 	initializing bubble
 	init: function() {
 		this.renderDom();
 		this.cacheDom();
 		this.bindListeners();
 		this.itIsActived = false;
-
-		// inicializando bmod
-		bmod.cacheDom();
-		return "All it's Ok"
 	},
 	kill: function() {
-		// soon
+		this.$parentNode = this.$mainContentParent.parentNode;
+		this.$parentNode.removeChild(this.$mainContentParent);
 	},
 	displayContainer: function() {
 		this.itIsOpen = true;
@@ -23,7 +21,7 @@ var bpop = {
 		this.$draggable.style.left = '5px';
 		this.$draggable.style.top = '5px';
 
-		// generando fondo en fadeIn
+		// rendering fade background
 		this.$mainContentParent.appendChild(this.$bgFade);
 		setTimeout(function() {
 			bpop.$draggable.style.transition = 'transform 0.2s ease';
@@ -31,16 +29,19 @@ var bpop = {
 			bpop.itIsActived = true;
 		}, 200);
 
-		// obteniendo el background desde el DOM
+		// getting background in cache
 		this.$fadeBg = this.$mainContentParent.querySelector('.bubble_default__bg');
 		this.$fadeBg.style.opacity = '1';
 	},
 	dragg: function(e) {
-		// la variable this.draggActives se encarga
-		// de determinar si es momento de que la
-		// burbuja siga la posición del mouse.
-		// referecia a true #02
-		// referecia a false #03
+
+		/*
+		* this.draggActives 
+		* Determines if it is time for the bubble to follow the mouse position
+		* 
+		* reference a true #02
+		* reference a false #03
+		*/
 
 		if (this.draggActives) {
 			this.x = e.clientX;
@@ -53,32 +54,39 @@ var bpop = {
 		}
 	},
 	draggOn: function(e) {
-		// activando dragado
-		// ancla #02
+		// Activating dragg
+		// anchor #02
 		this.draggActives = true;
 
-		// referencia #01
+		// reference #01
 		this.initialStaticalClientX = e.clientX;
 		this.initialStaticalClientY = e.clientY;
 
-		// bindeando evento para el dragado en toda la ventana
+		// binding for the dragg event
 		window.addEventListener('mousemove', bpop.dragg.bind(this) );
 	},
 	disableDragg: function(e) {
-		// ancla #03
+		// anchor #03
 		this.draggActives = false;
 		
-		// ancla #01
+		// anchor #01
 
-		// estas variables se guardan durante el evento mouse
-		// mouseup para determinar si la posición en la que se
-		// encuentra la burbuja al soltar el click es la misma
-		// que cuando se empezó
+		/*
+		* estas variables se guardan durante el evento mouse
+		* mouseup para determinar si la posición en la que se
+		* encuentra la burbuja al soltar el click es la misma
+		* que cuando se empezó
+		*/
+
+		/*
+		* These variables are saved during mouseup event
+		* for know if the bubble position It is the same
+		* as in the beginning
+		*/
 		
 		this.finalStaticalClientX = e.clientX;
 		this.finalStaticalClientY = e.clientY;
 		this.simulatedClick();
-		// window.removeEventListener('mousemove', bpop.dragg.bind(this) );
 	},
 	setAside: function() {
 		if (this.finalStaticalClientX < (window.innerWidth / 2)) {
@@ -105,15 +113,21 @@ var bpop = {
 		}, 200);
 	},
 	simulatedClick: function() {
-		// checando la posicion para determinar
-		// el evento click
+		/*
+		* checking the bubble position
+		* handling initial position and
+		* final position for simulate a
+		* click event
+		*/
 
 		if (this.initialStaticalClientX == this.finalStaticalClientX && this.initialStaticalClientY == this.finalStaticalClientY) {
+			
 			if(this.itIsActived) {
 				this.setAsideFromDefault();
 			} else {
 				this.displayContainer();
 			}
+
 		} else {
 			if(this.itIsActived) {
 				this.$fadeBg.style.opacity = '0';
@@ -128,24 +142,23 @@ var bpop = {
 	bindListeners: function() {
 		// añadiendo eventos para el dragado
 		// de la burbuja
+		
+		// binding event for dragg
+		// from bubble
 		this.$bubbleBody.addEventListener('mousedown', this.draggOn.bind(this) );
 		this.$bubbleBody.addEventListener('mouseup', this.disableDragg.bind(this) );
 
-		// evento para el fondo
+		// binding fade bg event
 		this.$bgFade.addEventListener('click', this.setAsideFromDefault.bind(this) );
 	},
 	renderDom: function() {
-		// creando la burbuja
-		// inicializada con la clase unactive para
-		// que aparezca minimizada
+		// creating bubble
 
 		this.$bubbleBody = document.createElement('div');
 		this.$bubbleBody.classList.add('bubble_default__bubble');
 		this.$bubbleBody.setAttribute('id', 'floatingBubble');
 
-		// creando la burbuja
-		// inicializada con la clase unactive para
-		// que aparezca minimizada
+		// creating wrapper
 
 		this.$bubbleBodyContent = document.createElement('div');
 		this.$bubbleBodyContent.classList.add('minimized');
@@ -153,50 +166,39 @@ var bpop = {
 		
 		this.$bubbleBodyContentInternal = document.createElement('div');
 		this.$bubbleBodyContentInternal.classList.add('bubble_default__internal');
+		this.$bubbleBodyContentInternal.setAttribute('id', 'bpop');
 
 		this.$bubbleBodyContent.appendChild(this.$bubbleBodyContentInternal);
 
-		// Creando el contenedor para la burbuja y el container
+		// creating main parent for all framework
 		this.$bubbleBodyParent = document.createElement('section');
 		this.$bubbleBodyParent.setAttribute('id', 'floatingBubbleContainer');
 		
-		//insertando la burbuja y el contenedor en el contenedor padre
+		// setting the bubble and wrapper inside of main parent
 		this.$bubbleBodyParent.appendChild(this.$bubbleBody);
 		this.$bubbleBodyParent.appendChild(this.$bubbleBodyContent);
 
-		// insertando el contenedor padre en el body
+		// setting main parent on body tag
 		document.querySelector('body').appendChild(this.$bubbleBodyParent);
 
-		//linkeando stylesheet
+		// linking stylesheet
 		document.head.innerHTML = document.head.innerHTML + '<link rel="stylesheet" type="text/css" href="bpop.css">';
 
-		// creando el fondo en fadeIn
+		// creating fade background
 		this.$bgFade = document.createElement('span');
 		this.$bgFade.classList.add('bubble_default__bg');
 	},
 	cacheDom: function() {
-		// cargando los elementos de DOM
-		// contenedor principal
+		// caching elements from DOM
+		// caching main container
 		this.$mainContentParent = document.querySelector('#floatingBubbleContainer');
 		
-		// contenedor información
+		// caching wrapper información
 		this.$mainContentWrapper = this.$mainContentParent.querySelector('.bubble_default__content');
 		
-		// burbuja
+		// caching bubble
 		this.$draggable = this.$mainContentParent.querySelector('.bubble_default__bubble');
 	}
 }
 
-var bmod = {
-	setContent: function(param) {
-		this.$mainContentInternal.innerHTML = param + '<br><br>';
-	},
-	pushContent: function(param) {
-		this.$mainContentInternal.innerHTML = this.$mainContentInternal.innerHTML + param + '<br><br>';
-	},
-	cacheDom: function() {
-		this.$draggable = document.querySelector('.bubble_default__bubble');
-		this.$mainContentWrapper = document.querySelector('.bubble_default__content');
-		this.$mainContentInternal = document.querySelector('.bubble_default__internal');
-	}
-}
+bpop.init();
