@@ -1,5 +1,5 @@
 # bubble popup
-v 0.1 - 17/07/17 example on [codepen](https://codepen.io/e1016/pen/VWObge)
+v 0.1 - 17/07/17 example on [codepen](https://codepen.io/e1016/pen/VWObge) applying ReactJs
 ## use
 
 For initilize the bubble only need write the next line
@@ -31,6 +31,6 @@ auto-generated structure:
 4. Finally the container where we can add our content.
 ----------------
 ```JavaScript
-// detener ejecución
+// stopping script
 bpop.kill();
 ```
