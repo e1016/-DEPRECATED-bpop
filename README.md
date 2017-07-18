@@ -1,5 +1,5 @@
 # bubble popup
-v 0.1 - 17/07/17 example on [codepen](https://codepen.io/e1016/pen/VWObge) applying ReactJs
+v 0.1 - Find an example on [this link](https://codepen.io/e1016/pen/VWObge) applying ReactJs
 ## use
 
 For initilize the bubble only need write the next line
@@ -18,7 +18,7 @@ auto-generated structure:
 <section id="floatingBubbleContainer"> <!-- 1 -->
     <div class="bubble_default__bubble" id="floatingBubble"></div> <!-- 2 -->
     <div class="bubble_default__content minimized"> <!-- 3 -->
-        <div class="bubble_default__internal">
+        <div id="bpop" class="bubble_default__internal">
             <!-- 4 -->
         </div>
     </div>
