@@ -2,11 +2,11 @@
   // burbuja flotante         -v 0.1 //
  // z-index: 999                    //
 /////////////////////////////////////
-	
+
 var bpop = {
 	// 	initializing bubble
-	init: function() {
-		this.renderDom();
+	init: function(param) {
+		if (param.autoRender == true) { this.renderDom(); }
 		this.cacheDom();
 		this.bindListeners();
 		this.itIsActived = false;
@@ -29,7 +29,7 @@ var bpop = {
 			bpop.itIsActived = true;
 		}, 200);
 
-		// getting background in cache
+		// caching fade background
 		this.$fadeBg = this.$mainContentParent.querySelector('.bubble_default__bg');
 		this.$fadeBg.style.opacity = '1';
 	},
@@ -140,9 +140,6 @@ var bpop = {
 		}
 	},
 	bindListeners: function() {
-		// añadiendo eventos para el dragado
-		// de la burbuja
-		
 		// binding event for dragg
 		// from bubble
 		this.$bubbleBody.addEventListener('mousedown', this.draggOn.bind(this) );
@@ -199,6 +196,4 @@ var bpop = {
 		// caching bubble
 		this.$draggable = this.$mainContentParent.querySelector('.bubble_default__bubble');
 	}
-}
-
-bpop.init();
+};
