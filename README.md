@@ -2,7 +2,7 @@
 v 0.1 - Find an example on [this link](https://codepen.io/e1016/pen/VWObge) applying ReactJs
 ## use
 
-linked from: ```https://codepen.io/e1016/pen/awrWQg.js```
+For quick use: ```https://codepen.io/e1016/pen/awrWQg.js```
 
 For initilize the bubble only need write the next line
 ```JavaScript
@@ -14,7 +14,7 @@ bpop.init({
 
 ```autoRender``` can recive ```true``` or ```false``` depending of this all the necesary HTML will render automaticly (we can push content with ReacJS or set manualy)
 
-auto-generated structure:
+Auto-generated structure:
 ```HTML
 
 <section id="floatingBubbleContainer"> <!-- 1 -->
