@@ -179,7 +179,7 @@ var bpop = {
 		document.querySelector('body').appendChild(this.$bubbleBodyParent);
 
 		// linking stylesheet
-		document.head.innerHTML = document.head.innerHTML + '<link rel="stylesheet" type="text/css" href="bpop.css">';
+		document.head.innerHTML = document.head.innerHTML + '<link rel="stylesheet" type="text/css" href="https://codepen.io/e1016/pen/awrWQg.css">';
 
 		// creating fade background
 		this.$bgFade = document.createElement('span');
