@@ -5,7 +5,9 @@ v 0.1 - 17/07/17 example on [codepen](https://codepen.io/e1016/pen/VWObge)
 For initilize the bubble only need write the next line
 ```JavaScript
 // init
-bpop.init();
+bpop.init({
+  autoRender: true
+});
 ```
 
 ```autoRender``` can recive ```true``` or ```false``` depending of this all the necesary HTML will render automaticly (we can push content with ReacJS or set manualy)
