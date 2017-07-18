@@ -2,6 +2,8 @@
 v 0.1 - Find an example on [this link](https://codepen.io/e1016/pen/VWObge) applying ReactJs
 ## use
 
+linked from: ```https://codepen.io/e1016/pen/awrWQg.js```
+
 For initilize the bubble only need write the next line
 ```JavaScript
 // init
