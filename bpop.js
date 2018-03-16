@@ -1,7 +1,7 @@
-   /////////////////////////////////////
-  // burbuja flotante         -v 0.1 //
- // z-index: 999                    //
-/////////////////////////////////////
+   ///////////////////////////////////////
+  // burbuja flotante [DEPRECATED] 0.1 //
+ // z-index: 999                      //
+///////////////////////////////////////
 
 // checking for mobile devices
 // code from http://blog.alejandromolero.com/detectar-si-es-un-smartphone-o-tablet-mediante-javascript-y-jquery/
